@@ -485,7 +485,7 @@ class Chip8CPU(object):
         source = (self.operand & 0x00F0) >> 4
         source_reg = self.registers['v'][source]
         target_reg = self.registers['v'][target]
-        if target_reg > source_reg:
+        if target_reg >= source_reg:
             target_reg -= source_reg
             self.registers['v'][0xF] = 1
         else:
