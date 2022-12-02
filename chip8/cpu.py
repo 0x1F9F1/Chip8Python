@@ -550,8 +550,8 @@ class Chip8CPU(object):
         """
         source = (self.operand & 0x0F00) >> 8
         target = (self.operand & 0x00F0) >> 4
-        bit_seven = (self.registers['v'][source] & 0x80) >> 8
-        self.registers['v'][target] = self.registers['v'][source] << 1
+        bit_seven = (self.registers['v'][source] & 0x80) >> 7
+        self.registers['v'][target] = (self.registers['v'][source] << 1) & 0xFF
         self.registers['v'][0xF] = bit_seven
 
     def skip_if_reg_not_equal_reg(self):
